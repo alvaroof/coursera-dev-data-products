@@ -13,16 +13,25 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Coin-thrower simulator"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+    h3("How many times should we throw that coin?"),
+       numericInput("throws",
+                   "Number of coin throws:",
+                   min = 10,
+                   max = 1000,
+                   value = 20),
+    h3("How many different experiments should we perform?"),
+    numericInput("experiments",
+                 "Number of experiments:",
+                 min = 50,
+                 max = 10000,
+                 value = 1000),
+        h3("is the coin unfair? (if yes, will be heads with 0.8 prob)"),
+        checkboxInput("unfair_coin", "Unfair coin", value = FALSE)
     ),
     
     # Show a plot of the generated distribution

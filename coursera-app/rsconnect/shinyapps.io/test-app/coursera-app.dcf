@@ -1,0 +1,10 @@
+name: coursera-app
+title:
+username:
+account: test-app
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 297843
+bundleId: 1264515
+url: https://test-app.shinyapps.io/coursera-app/
+when: 1520867500.2454

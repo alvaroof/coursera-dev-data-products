@@ -1,0 +1,61 @@
+---
+title: "Week 4 Course Project"
+author: "Alvaro Ortiz"
+date: "March 12, 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview
+
+This is an application made with the Shiny library in R for the Final Project in the Developing Data Products course in Coursera.
+
+This application is a coin-thrower simulator, with the following parameter to be modified.
+
+- A numerical input for the number of coin throws
+- A numerical input for the number of experiments to carry out
+- A flag to make the coin Fair/Unfair (with probability 0.8 for heads)
+
+you can find the application at: <https://test-app.shinyapps.io/coursera-app/>
+
+##Usage: screenshot
+
+![](screenshot1.png)
+
+## Calculations: Fair coin
+
+as depicted in the previous slide, we will show the histogram for 100 coins being throw in 1000 different experiments. in each experiment we calculate the mean for the 100 throws. as the unfair flag is unchecked, the prob is 0.5 each.
+
+```{r experiment}
+nthrows <- 100
+nexp <- 1000
+p <- 0.5
+means <- numeric(nexp)
+for(i in seq(1:nexp)){
+    x <- rbinom(nthrows,1,p)
+         means[i] <- mean(x)
+         }
+hist(means, breaks = 30, col = 'darkgray', 
+     border ='white',xlim = c(0,1))
+```
+
+
+## Calculations: Unfair coin
+
+as depicted in the previous slide, we will show the histogram for 100 coins being throw in 1000 different experiments. in each experiment we calculate the mean for the 100 throws. as the unfair flag is checked, the prob is 0.8 each.
+
+```{r experiment unfair}
+nthrows <- 100
+nexp <- 1000
+p <- 0.8
+means <- numeric(nexp)
+for(i in seq(1:nexp)){
+    x <- rbinom(nthrows,1,p)
+         means[i] <- mean(x)
+         }
+hist(means, breaks = 30, col = 'darkgray', 
+     border ='white',xlim = c(0,1))
+```
